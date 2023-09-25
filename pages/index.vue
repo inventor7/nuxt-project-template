@@ -1,7 +1,23 @@
 
+<script setup>
+import { useUserStore } from '~/stores/user'
+
+
+//data
+const { locale } = useI18n()
+const colorMode = useColorMode()
+const { user } = toRefs(useUserStore())
+//meta
+definePageMeta({
+  title: 'Home',
+  description: 'This is the home page',
+  layout: 'custom',
+})
+
+</script>
 
 <template>
-  {{  user.name  }} 
+  {{ user.name }}
   <br>
   <ColorScheme placeholder="..." tag="span">
     Color mode: <b>{{ $colorMode.preference }}</b>
@@ -17,7 +33,7 @@
 
     </form>
   </div>
-  <a-button @click="handleMessage">
+  <a-button :theme="$colorMode.preference" @click="handleMessage">
     button
   </a-button>
 
@@ -29,35 +45,9 @@
     <option value="sepia">Sepia</option>
   </select>
 </template>
-<script setup>
-import { useUserStore } from '~/stores/user' 
 
-
-//data
-const { locale } = useI18n()
-const colorMode = useColorMode()
-const { user } = toRefs(useUserStore())
-//meta
-definePageMeta( {
-  title: 'Home',
-  description: 'This is the home page',
-  layout: 'custom',
-} )
-
-</script>
 <style>
-body {
-  background-color: #fff;
-  color: rgba(0, 0, 0, 0.8);
-}
-
-.dark-mode body {
-  background-color: #091a28;
-  color: #ebf4f1;
-}
-
-.sepia-mode body {
-  background-color: #f1e7d0;
-  color: #433422;
+.idk {
+  white-space: nowrap;
 }
 </style>

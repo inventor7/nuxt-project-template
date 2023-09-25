@@ -1,3 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Themes */
+body {
+  @apply bg-white text-gray-800;
+}
+
+.dark-mode body {
+  @apply bg-[#091a28] text-[#ebf4f1];
+}
+
+.sepia-mode body {
+  @apply bg-[#f1e7d0] text-[#433422];
+}
