@@ -4,7 +4,7 @@
 
 /* Themes */
 body {
-  @apply bg-white text-gray-800;
+  @apply bg-slate-100 text-gray-800;
 }
 
 .dark-mode body {

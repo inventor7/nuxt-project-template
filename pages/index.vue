@@ -28,8 +28,11 @@ definePageMeta({
       <select v-model="locale">
         <option value="en">en</option>
         <option value="fr">fr</option>
+        <option value="ar">ar</option>
       </select>
       <p>{{ $t('welcome') }}</p>
+      <p>{{ $t('home') }}</p>
+      <p>{{ $t('about') }}</p>
 
     </form>
   </div>
