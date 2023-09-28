@@ -1,12 +1,19 @@
 
 <script setup>
 import { useUserStore } from '~/stores/user'
+import { useUtils } from '~/composables/useUtils'
 
 
 //data
 const { locale } = useI18n()
+const siwtchLang = useSwitchLocalePath()
+const b = useLocalePath()
 const colorMode = useColorMode()
 const { user } = toRefs(useUserStore())
+
+//function 
+const { translate } = useUtils()
+
 //meta
 definePageMeta({
   title: 'Home',
@@ -17,6 +24,10 @@ definePageMeta({
 </script>
 
 <template>
+  <NuxtLink :to="b('/about')">
+    to about
+  </NuxtLink>
+
   {{ user.name }}
   <br>
   <ColorScheme placeholder="..." tag="span">
@@ -26,19 +37,22 @@ definePageMeta({
   <div>
     <form>
       <select v-model="locale">
-        <option value="en">en</option>
-        <option value="fr">fr</option>
-        <option value="ar">ar</option>
+        <option value="en" @click="siwtchLang('en')">
+          en
+        </option>
+        <option value="fr" @click="siwtchLang('fr')">
+          fr
+        </option>
+        <option @click="siwtchLang('ar')">
+          ar
+        </option>
       </select>
-      <p>{{ $t('welcome') }}</p>
-      <p>{{ $t('home') }}</p>
-      <p>{{ $t('about') }}</p>
+      <p>{{ translate('home') }}</p>
+
 
     </form>
   </div>
-  <a-button :theme="$colorMode.preference" @click="handleMessage">
-    button
-  </a-button>
+
 
   <h1>Color mode: {{ $colorMode.value }}</h1>
   <select v-model="$colorMode.preference">
